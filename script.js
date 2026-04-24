@@ -115,8 +115,14 @@ function getOrbitalPositions(r, n) {
 }
 
 /**
- * Genera vértices de un polígono
+ * Genera los vértices de un polígono regular
+ * @param {number} cx - Coordenada del centro en x
+ * @param {number} cy - Coordenada del centro en y
+ * @param {number} lados - Número de lados del polígono
+ * @param {number} radio - Distancia del centro a cada vértice
+ * @returns {Array} Arreglo de vértices [{x, y}, ...]
  */
+ 
 function getPolygonVertices(cx, cy, lados, radio) {
     let vertices = [];
 
