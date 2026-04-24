@@ -14,7 +14,7 @@ let centerY = canvas.height / 2;
  * @param {number} y
  * @param {string} color
  */
-function plotPixel(x, y, color = "#000") {
+function plotPixel(x, y, color = "#184579") {
     ctx.fillStyle = color;
     ctx.fillRect(Math.floor(x), Math.floor(y), 1, 1);
 }
@@ -157,6 +157,8 @@ function drawPolygon(vertices) {
     }
 }
 // valores aleatorios
+function main() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 let R = Math.floor(Math.random() * 100) + 100;
 let N = Math.floor(Math.random() * 7) + 4;
 let k = Math.floor(Math.random() * 4) + 3;
@@ -175,4 +177,5 @@ for (let i = 0; i < centros.length; i++) {
     let vertices = getPolygonVertices(c.x, c.y, k, 20);
 
     drawPolygon(vertices);
+}
 }
