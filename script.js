@@ -147,3 +147,23 @@ function drawPolygon(vertices) {
         );
     }
 }
+// valores aleatorios
+let R = Math.floor(Math.random() * 100) + 100;
+let N = Math.floor(Math.random() * 7) + 4;
+let k = Math.floor(Math.random() * 4) + 3;
+
+// dibujar órbita
+midpointCircle(centerX, centerY, R, "#aaa");
+
+// centros
+let centros = getOrbitalPositions(R, N);
+
+// dibujar polígonos
+for (let i = 0; i < centros.length; i++) {
+
+    let c = centros[i];
+
+    let vertices = getPolygonVertices(c.x, c.y, k, 20);
+
+    drawPolygon(vertices);
+}
