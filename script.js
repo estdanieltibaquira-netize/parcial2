@@ -56,3 +56,43 @@ function midpointCircle(cx, cy, r, color = "#999") {
 
 // prueba
 midpointCircle(centerX, centerY, 100);
+
+/**
+ * Dibuja una línea con Bresenham
+ * @param {number} x0
+ * @param {number} y0
+ * @param {number} x1
+ * @param {number} y1
+ * @param {string} color
+ */
+function bresenhamLine(x0, y0, x1, y1, color = "#000") {
+
+    let dx = Math.abs(x1 - x0);
+    let dy = Math.abs(y1 - y0);
+
+    let sx = (x0 < x1) ? 1 : -1;
+    let sy = (y0 < y1) ? 1 : -1;
+
+    let err = dx - dy;
+
+    while (true) {
+        plotPixel(x0, y0, color);
+
+        if (x0 === x1 && y0 === y1) break;
+
+        let e2 = 2 * err;
+
+        if (e2 > -dy) {
+            err -= dy;
+            x0 += sx;
+        }
+
+        if (e2 < dx) {
+            err += dx;
+            y0 += sy;
+        }
+    }
+}
+
+// prueba línea
+bresenhamLine(50, 50, 200, 200);
