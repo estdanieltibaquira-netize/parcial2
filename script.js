@@ -96,3 +96,54 @@ function bresenhamLine(x0, y0, x1, y1, color = "#000") {
 
 // prueba línea
 bresenhamLine(50, 50, 200, 200);
+/**
+ * Calcula posiciones sobre la circunferencia
+ */
+function getOrbitalPositions(r, n) {
+    let posiciones = [];
+
+    for (let i = 0; i < n; i++) {
+        let angulo = (2 * Math.PI / n) * i;
+
+        let x = centerX + r * Math.cos(angulo);
+        let y = centerY + r * Math.sin(angulo);
+
+        posiciones.push({x: x, y: y});
+    }
+
+    return posiciones;
+}
+
+/**
+ * Genera vértices de un polígono
+ */
+function getPolygonVertices(cx, cy, lados, radio) {
+    let vertices = [];
+
+    for (let i = 0; i < lados; i++) {
+        let angulo = (2 * Math.PI / lados) * i;
+
+        let x = cx + radio * Math.cos(angulo);
+        let y = cy + radio * Math.sin(angulo);
+
+        vertices.push({x: x, y: y});
+    }
+
+    return vertices;
+}
+
+function drawPolygon(vertices) {
+
+    for (let i = 0; i < vertices.length; i++) {
+
+        let p1 = vertices[i];
+        let p2 = vertices[(i + 1) % vertices.length];
+
+        bresenhamLine(
+            Math.round(p1.x),
+            Math.round(p1.y),
+            Math.round(p2.x),
+            Math.round(p2.y)
+        );
+    }
+}
