@@ -137,7 +137,10 @@ function getPolygonVertices(cx, cy, lados, radio) {
 
     return vertices;
 }
-
+/**
+ * Dibuja un polígono conectando sus vértices con Bresenham
+ * @param {Array} vertices - Arreglo de puntos {x, y}
+ */
 function drawPolygon(vertices) {
 
     for (let i = 0; i < vertices.length; i++) {
